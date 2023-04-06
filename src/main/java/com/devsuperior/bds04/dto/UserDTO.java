@@ -5,7 +5,8 @@ import com.devsuperior.bds04.entities.User;
 import java.io.Serializable;
 
 public class UserDTO implements Serializable {
-    private Long id;
+	private static final long serialVersionUID = 1L;
+	private Long id;
     private String email;
 
     public UserDTO(User entity) {
