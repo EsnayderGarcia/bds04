@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_event")
@@ -17,12 +20,17 @@ public class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotBlank(message = "O nome do evento é obrigatório")
 	private String name;
+	
+	@FutureOrPresent(message = "A data deve ser maior ou igual a atual")
 	private LocalDate date;
 	private String url;
 	
 	@ManyToOne
 	@JoinColumn(name = "city_id")
+	@NotNull(message = "A cidade aonde o evento irá ocorrer é obrigatória")
 	private City city;
 	
 	public Event() {
