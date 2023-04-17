@@ -21,7 +21,6 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "O nome do evento é obrigatório")
 	private String name;
 	
 	@FutureOrPresent(message = "A data deve ser maior ou igual a atual")
@@ -30,7 +29,6 @@ public class Event {
 	
 	@ManyToOne
 	@JoinColumn(name = "city_id")
-	@NotNull(message = "A cidade aonde o evento irá ocorrer é obrigatória")
 	private City city;
 	
 	public Event() {
